@@ -9,7 +9,7 @@ jeu:set
 sur:on
 le:the
 iPad:iPad
-sa:his
+sa:her
 mère:founding		
 dépenser:used
 dollars:dollars
@@ -83,10 +83,11 @@ que:that
 sa:his
 banque:bank
 la:the			
-contacte:contact
+contacte:contacted
 quelques:some
 jours:days
-plus tard:later
+plus:more
+tard:later
 alertée:alerted
 par:by
 ces:these
@@ -112,7 +113,7 @@ négociations:negotiations
 accepté:accepted
 considérer:consider
 achat:buying
-comme:that
+comme:as
 un:a
 accident:accident
 et:and
@@ -140,7 +141,6 @@ surprises:surprises
 les:the
 répondent:replied
 ils:they
-pas:not
 connaissaient:know
 cette:this
 règle:rule

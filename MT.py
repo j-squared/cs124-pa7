@@ -22,7 +22,7 @@ def translate(sentences, dict):
     for sentence in sentences:
         englishSentence = ""
         for word in re.split(delimiters, sentence):
-            wordUnicode = word.decode('utf-8').lower()
+            wordUnicode = word.decode('utf-8')
             if wordUnicode == ' ': continue
             if wordUnicode.find("'") != -1:
                 ind = wordUnicode.find("'")
@@ -36,17 +36,13 @@ def translate(sentences, dict):
     return result
 
 def translateWord(word, dict):
-    if word in dict:
-        return dict[word] + " "
+    if word.lower() in dict:
+        return dict[word.lower()] + " "
     else:
         return word + " "
 
 
 def main():
-#    dict = readDict("dict.txt")
-#    sentences = readSentences("sentences1.txt")
-#    translated = translate(sentences, dict)
-
     dict2 = readDict("dict2.txt")
     sentences2 = readSentences("sentences2.txt")
     translated2 = translate(sentences2, dict2)
