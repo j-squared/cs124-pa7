@@ -41,6 +41,11 @@ def translateWord(word, dict):
     else:
         return word + " "
 
+def stupidFixes(POS):
+    for taggedSentence in POS:	
+        for word,tag in taggedSentence:
+            print(word + "!\n" + tag + "!!\n")
+    return POS
 
 def main():
     dict2 = readDict("dict2.txt")
@@ -56,9 +61,9 @@ def main():
     for sentence in translated2:
         tagged = st.tag(sentence.split())
         if (len(tagged)>0):
-            print(tagged)
+            #print(tagged)
             POS.append(tagged)
-
+    POS = stupidFixes(POS)
 
 if __name__ == "__main__":
     main()
