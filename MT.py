@@ -46,6 +46,7 @@ def main():
     dict2 = readDict("dict2.txt")
     sentences2 = readSentences("sentences2.txt")
     translated2 = translate(sentences2, dict2)
+    print "========TRANSLATION 0========="
     for sentence in translated2:
         print sentence
 
