@@ -18,17 +18,29 @@ def readSentences(file):
 
 def translate(sentences, dict):
     result = []
-    delimiters = "[ \",;:\.\!']"
+    delimiters = "([ \",;:\.\!])"
     for sentence in sentences:
         englishSentence = ""
         for word in re.split(delimiters, sentence):
             wordUnicode = word.decode('utf-8').lower()
-            if wordUnicode in dict:
-                englishSentence += dict[wordUnicode] + " "
+            if wordUnicode == ' ': continue
+            if wordUnicode.find("'") != -1:
+                ind = wordUnicode.find("'")
+                firstWord = wordUnicode[0:ind] + "'"
+                secondWord = wordUnicode[ind+1:len(wordUnicode)]
+                englishSentence += translateWord(firstWord, dict)
+                englishSentence += translateWord(secondWord, dict)
             else:
-                englishSentence += word + " "
+                englishSentence += translateWord(wordUnicode, dict)
         result.append(englishSentence)
     return result
+
+def translateWord(word, dict):
+    if word in dict:
+        return dict[word] + " "
+    else:
+        return word + " "
+
 
 def main():
 #    dict = readDict("dict.txt")

@@ -1,8 +1,8 @@
 un:a
 enfant:child
-de:with
+de:with		
 ans:years
-en:from there		
+en:in		
 quinze:fifteen
 minutes:minutes
 jeu:set			
@@ -10,8 +10,8 @@ sur:on
 le:the
 iPad:iPad
 sa:his
-mère:founding	
-dépenser:use
+mère:founding		
+dépenser:used
 dollars:dollars
 citoyen:citizen
 britannique:British
@@ -24,20 +24,22 @@ une:a
 application:application 		
 gratuite:free
 et:and
-d’:of			
-y:there		
+d':of			
+y:there	
 jouer:play
-pendant que:while		
+pendant:dangling
+que:that 		
 ses:his
 parents:parents
 recevaient:received
 des:some
 invités:guests
-Pour:for
+pour:for
 tuer:kill
 quelques:some
 zombies:zombies
-de plus:extra			
+de:of
+plus:extra			
 a:had 
 commandé:commanded
 une:a
@@ -49,16 +51,21 @@ armes:weapons
 qui:who			
 peuvent:could
 coûter:cost
-jusqu'à:up to
+jusqu':up
+à:to
 le:the
 lendemain:next day
 recevait:received
 mails:avenues 		
 les:the
 factures:bills
+facture:bill
 imaginant:imagining
-qu’:that
-il s'agissait d’:it was about		
+qu':that
+il:he
+s':himself
+agissait:about
+d':of		
 une:a
 seule:single
 envoyée:sent
@@ -67,9 +74,12 @@ fois:times
 par:by
 erreur:mistake
 elle:she
-l’:the		
+l':the		
 ignorait:ignored
-Jusqu'à ce que:until	
+jusqu':up
+à:to
+ce:that
+que:that	
 sa:his
 banque:bank
 la:the			
@@ -85,7 +95,8 @@ suspectes:suspect
 je:I
 ne:not
 comprends:understand
-toujours pas:not yet			
+toujours:always
+pas:step	
 comment:how
 il:he
 a:had
@@ -108,12 +119,12 @@ et:and
 rembourser:reimburse
 les:the
 parents:parents
-porte-parole:spokesperson
+porteparole:spokesperson
 compagnie:company
 déclaré:declared
 au:to the
-qu’:that
-il:he			
+qu':that
+il:he		
 était:was
 essentiel:essential
 garder:keep
@@ -146,14 +157,16 @@ activation:activation
 du:of the
 achats:purchases
 suivants:following
-se font:do
+se:oneself
+font:do
 sans:without
 nouvelles:new
 vérifications:verifications
 petit:little
-quant à:as for
+quant:as for
+à:to
 lui:him
-s’:themselves
+s':themselves
 est:is
 fait:made
 gronder:grounded
