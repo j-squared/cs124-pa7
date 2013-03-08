@@ -41,6 +41,7 @@ def translateWord(word, dict):
     else:
         return word + " "
 
+# Realized rules need to be related to POS somehow, will change that later
 def stupidFixes(POS):
     modifiedPOS = []
     for taggedSentence in POS:	
