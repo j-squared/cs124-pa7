@@ -42,10 +42,49 @@ def translateWord(word, dict):
         return word + " "
 
 def stupidFixes(POS):
+    modifiedPOS = []
     for taggedSentence in POS:	
-        for word,tag in taggedSentence:
-            print(word + "!\n" + tag + "!!\n")
-    return POS
+        modifiedSentence = []
+        notFlag = False
+        dangleFlag = False
+        for taggedWord in taggedSentence:
+            word, tag = taggedWord
+            if word == 'not':
+                notFlag = True
+            elif word == 'dangling':
+                dangleFlag = True
+            taggedWord = simplePlayRule(taggedWord,notFlag,dangleFlag)     
+            if len(taggedWord[0]) != 0: 
+                modifiedSentence.append(taggedWord) 
+        modifiedPOS.append(modifiedSentence)  
+    return modifiedPOS
+
+def simplePlayRule(taggedWord, notFlag, dangleFlag):
+    fixes = {'set':'play','founding':'mother','avenues':'e-mails','commanded':'purchased',
+        'dangling':'','that':'while','step':'','there':'it'}
+    word, tag = taggedWord # ack use a map!!
+    if word in fixes:
+        return (fixes[word],tag)
+
+    '''well that (below) was silly, using a map instead (above)'''
+    '''if word == 'set':
+        word = 'play'
+    elif word == 'founding':
+        word = 'mother'
+    elif word == 'avenues':
+        word = 'e-mails'
+    elif word == 'commanded': 
+        word = 'purchased'
+    elif word == 'dangling':
+        word = ''# meh
+    elif word == 'that' and dangleFlag:
+        word = 'while'
+    elif word == 'step' and notFlag:
+        word = ''
+    elif word == 'there':
+        word = 'it'
+    '''
+    return (word,tag)
 
 def main():
     dict2 = readDict("dict2.txt")
@@ -56,7 +95,8 @@ def main():
         print sentence
 
 
-    st = POSTagger('stanford-postagger/models/english-left3words-distsim.tagger','stanford-postagger/stanford-postagger.jar')
+    st = POSTagger('stanford-postagger/models/english-left3words-distsim.tagger',
+        'stanford-postagger/stanford-postagger.jar')
     POS = []
     for sentence in translated2:
         tagged = st.tag(sentence.split())
@@ -64,6 +104,8 @@ def main():
             #print(tagged)
             POS.append(tagged)
     POS = stupidFixes(POS)
+    for sentence in POS:
+        print sentence # '[%s]' % ', '.join(map(str, sentence))
 
 if __name__ == "__main__":
     main()
