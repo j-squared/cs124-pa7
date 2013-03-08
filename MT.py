@@ -45,45 +45,25 @@ def stupidFixes(POS):
     modifiedPOS = []
     for taggedSentence in POS:	
         modifiedSentence = []
-        notFlag = False
-        dangleFlag = False
+        notFlag, dangleFlag = False, False
         for taggedWord in taggedSentence:
             word, tag = taggedWord
             if word == 'not':
                 notFlag = True
             elif word == 'dangling':
                 dangleFlag = True
-            taggedWord = simplePlayRule(taggedWord,notFlag,dangleFlag)     
-            if len(taggedWord[0]) != 0: 
+            taggedWord = simpleTranslationRules(taggedWord,notFlag,dangleFlag)     
+            if len(taggedWord[0]) > 0: 
                 modifiedSentence.append(taggedWord) 
         modifiedPOS.append(modifiedSentence)  
     return modifiedPOS
 
-def simplePlayRule(taggedWord, notFlag, dangleFlag):
+def simpleTranslationRules(taggedWord, notFlag, dangleFlag):
     fixes = {'set':'play','founding':'mother','avenues':'e-mails','commanded':'purchased',
         'dangling':'','that':'while','step':'','there':'it'}
     word, tag = taggedWord # ack use a map!!
     if word in fixes:
         return (fixes[word],tag)
-
-    '''well that (below) was silly, using a map instead (above)'''
-    '''if word == 'set':
-        word = 'play'
-    elif word == 'founding':
-        word = 'mother'
-    elif word == 'avenues':
-        word = 'e-mails'
-    elif word == 'commanded': 
-        word = 'purchased'
-    elif word == 'dangling':
-        word = ''# meh
-    elif word == 'that' and dangleFlag:
-        word = 'while'
-    elif word == 'step' and notFlag:
-        word = ''
-    elif word == 'there':
-        word = 'it'
-    '''
     return (word,tag)
 
 def main():
