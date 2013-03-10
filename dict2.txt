@@ -41,7 +41,7 @@ zombies:zombies
 de:of
 plus:extra			
 a:had 
-commandé:commanded
+commandé:ordered
 une:a
 série:series
 fléchettes:darts
