@@ -1,7 +1,8 @@
 from nltk.tag.stanford import POSTagger
+import sys
 import re
 
-VOWELS = ['a','e','o','i','u'] 
+VOWELS = ['a','e','o','i','u']
 
 def readDict(file):
     dict = {}
@@ -126,13 +127,17 @@ def ruleTwoNine(POS):
         modifiedSentence.append((prevWord2, prevTag2))
         prevWord, prevTag = taggedSentence[1]
         modifiedSentence.append((prevWord, prevTag))
+        switchedPos = sys.maxint
         for taggedWord in taggedSentence[2:]:
             word, tag = taggedWord
+            switchedPos = switchedPos + 1
             # Rule 9
-            if prevWord == "of" and tag == "NN" and prevTag2 == "NN":
+            if switchedPos>2  and prevWord == "of" and tag in ["NN", "NNP"] and prevTag2 in ["NN", "NNP"]:
                 # print prevWord2, word
-                modifiedSentence[len(modifiedSentence)-2] = (word, tag)
-                modifiedSentence[len(modifiedSentence)-1] = (prevWord2, prevTag2)
+                modifiedSentence[len(modifiedSentence)-2] = (word + " " + prevWord2, tag)
+                modifiedSentence.pop()
+#                modifiedSentence[len(modifiedSentence)-1] = (prevWord2, prevTag2)
+                switchedPos = 0
             # Rule 2
             elif tag == "CD" and prevTag2 == "CD":
                 modifiedSentence[len(modifiedSentence)-1] = (prevWord2+"."+word, tag)
@@ -142,7 +147,7 @@ def ruleTwoNine(POS):
                 modifiedSentence.append(taggedWord)
 
             prevWord2, prevTag2 = prevWord, prevTag
-            prevWord, prevTag = word, tag 
+            prevWord, prevTag = word, tag
         modifiedPOS.append(modifiedSentence)
     return modifiedPOS
 
@@ -167,7 +172,7 @@ def ruleSixEight(POS):
                 modifiedSentence.append(taggedWord)
             prevWord3, prevTag3 = prevWord2, prevTag2
             prevWord2, prevTag2 = prevWord, prevTag
-            prevWord, prevTag = word, tag 
+            prevWord, prevTag = word, tag
         modifiedPOS.append(modifiedSentence)
     return modifiedPOS
 
@@ -212,6 +217,7 @@ def main():
         print ' '.join(map(getWord, sentence))
 
     POS = ruleTwoNine(POS)
+    POS = ruleTwoNine(POS) # apply twice
     print "=====================================RULE2+9 TRANSLATION========================================"
     for sentence in POS:
         print ' '.join(map(getWord, sentence))
